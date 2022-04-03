@@ -29,6 +29,41 @@ class Ticket {
     } 
 }
 
-class Factory {
-    static 
+// Masalah 3 tiket menggunakan sifat OOP yaitu Inheritance/pewarisan
+
+class VIP extends Ticket {
+    constructor(airlineName, origin, destination, seatNumber) {
+        super(airlineName, 'VIP', origin, destination, seatNumber)
+    }
 }
+class Business extends Ticket {
+    constructor(airlineName, origin, destination, seatNumber) {
+        super(airlineName, 'Bussines', origin, destination, seatNumber)
+    }
+}
+class Economy extends Ticket {
+    constructor(airlineName, origin, destination, seatNumber) {
+        super(airlineName, 'Economy', origin, destination, seatNumber)
+    }
+}
+
+class Factory {
+    static createTicket(airlineName, type, origin, destination, seatNumber) {
+      if (type === "VIP") {
+        return new VIP(airlineName, origin, destination, seatNumber)
+      } else if (type === "Business") {
+        return new Business(airlineName, origin, destination, seatNumber)
+      } else if (type === "Economy") {
+        return new Economy(airlineName, origin, destination, seatNumber)
+      }
+    }
+}
+
+module.exports = [Plane, 
+    Passenger, 
+    Ticket, 
+    VIP, 
+    Business, 
+    Economy, 
+    Factory
+] 
