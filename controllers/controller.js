@@ -7,14 +7,21 @@ const View = require('../views/view')
 class Controller {
   // PART 1
   static help(){
-
+    View.showCommandList()
   }
   static planeList(){
-
+    Model.readPlanes((err, result) => {
+      if(err) {
+        View.showError(err)
+      } else {
+        View.showPlaneList(result)
+      }
+    })
   }
-  static passengerList(){
-
+  static passengerList() {
+    
   }
+
   static checkSeats(){
 
   }

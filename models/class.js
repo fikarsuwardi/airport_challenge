@@ -59,11 +59,11 @@ class Factory {
     }
 }
 
-module.exports = [Plane, 
+module.exports = {Plane, 
     Passenger, 
     Ticket, 
     VIP, 
     Business, 
     Economy, 
     Factory
-] 
+} 
