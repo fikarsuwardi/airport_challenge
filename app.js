@@ -12,7 +12,7 @@ const argv = process.argv
    case "planeList":
      Controller.planeList();
      break
-   case "passenggerList":
+   case "passengerList":
      Controller.passengerList(argv[3]);
      break
    case "checkSeats":

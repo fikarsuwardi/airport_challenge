@@ -13,7 +13,7 @@ const fs = require('fs')
 // Tambahkan parameter sesuai kebutuhanmu
 class Model {
   // PART 1
-  static readPlanes(callback){
+  static readPlanes(callback) {
     fs.readFile("./data/plane.json", 'utf8', (err, data) => {
       if (err) {
         callback (err, null)
@@ -31,9 +31,27 @@ class Model {
       }
     })
   }
-  static readPassengers(){
 
+  static readPassengers(callback) {
+    fs.readFile("./data/passanger.json", 'utf8', (err, data) => {
+      if (err) {
+        callback (err, null)
+      } else {
+        data = JSON.parse(data)
+
+        let result = []
+
+        for (let i = 0; i < data.length; i++) {
+          let instance = new Passenger(data[i].id, data[i].name, data[i].gender, data[i].ticket.airlineName)
+        
+          result.push(instance)
+          //console.log(result)
+        }
+        callback (null, result);
+      }
+    })
   }
+
   static checkSeat(){
 
   }

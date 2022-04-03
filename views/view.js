@@ -15,12 +15,23 @@ class View {
     console.log(`node app.js <flight_number>`)
   }
 
+  static showErrorPlaneList(err) {
+    console.log(err)
+  }
   static showPlaneList(data) {
     console.table(data)
   }
-  static showError(err) {
+
+
+  static showErrorPassengerList(err) {
     console.log(err)
+  } 
+  static showPassengerList(data) {
+    let data2 = 
+    console.table(data)
   }
+
+
 
   // Tambahkan sendiri method yang kamu butuhkan
 }

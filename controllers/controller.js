@@ -9,16 +9,25 @@ class Controller {
   static help(){
     View.showCommandList()
   }
+
   static planeList(){
     Model.readPlanes((err, result) => {
       if(err) {
-        View.showError(err)
+        View.showErrorPlaneList(err)
       } else {
         View.showPlaneList(result)
       }
     })
   }
+  
   static passengerList() {
+    Model.readPassengers((err, result) => {
+      if(err) {
+        View.showErrorPassengerList(err)
+      } else {
+        View.showPassengerList(result)
+      }
+    })
     
   }
 
