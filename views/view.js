@@ -15,21 +15,62 @@ class View {
     console.log(`node app.js <flight_number>`)
   }
 
-  static showErrorPlaneList(err) {
-    console.log(err)
+  static showError(msg) {
+    console.log(msg)
   }
   static showPlaneList(data) {
     console.table(data)
   }
-
-
-  static showErrorPassengerList(err) {
-    console.log(err)
-  } 
   static showPassengerList(data) {
-    let data2 = 
-    console.table(data)
+    const dataAirLine = [];
+    for (let i = 0; i < data.length; i++) {
+      const id = data[i].id;
+      const name = data[i].name;
+      const gender = data[i].gender;
+      const airlineName = data[i].ticket.airlineName
+      dataAirLine.push({id, name, gender, airlineName})
+    }
+    console.table(dataAirLine)
   }
+
+  // static showCheckSeats(data) {
+  //   const {airlineName, origin, destination} = data;
+  //   console.log(`====================`);
+  //   console.log(`Fligth Number: ${flightNumber}`);
+  //   console.log(`Airline name: ${airlineName}`);
+  //   console.log(`Origin: ${origin}`)
+  //   console.log(`Destination: ${destination}`);
+  //   console.log(`====================`);
+  //   console.log(`Seating Plan`);
+
+  //   let seats = [
+  //   ['A', 'B', 'C', 'D'],
+  //   ['', '', '', ''],
+  //   ['', '', '', ''],
+  //   ['', '', '', ''],
+  //   ['', '', '', ''],
+  //   ['', '', '', ''],
+  //   ['', '', '', ''],
+  //   ['', '', '', ''],
+  //   ['', '', '', '']
+  //   ]
+
+  //   console.table(seats)
+
+  static showBuyTicket(data) {
+    console.log(data)
+  }
+
+  static showTicketInfo(data) {
+    console.log(data)
+  }
+
+  static 
+
+
+  // }
+
+
 
 
 

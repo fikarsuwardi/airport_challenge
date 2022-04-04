@@ -1,11 +1,14 @@
 "use strict"
+const { passengerList } = require('./controllers/controller.js')
 const Controller = require('./controllers/controller.js')
 
 // Good luck ...
-const argv = process.argv
+
+const command = process.argv[2]
+const input = process.argv.slice(3)
 // console.log(argv)
 
- switch(argv[2]) {
+ switch(command) {
    case "help":
      Controller.help();
      break
@@ -13,24 +16,24 @@ const argv = process.argv
      Controller.planeList();
      break
    case "passengerList":
-     Controller.passengerList(argv[3]);
+     Controller.passengerList();
      break
    case "checkSeats":
-     Controller.checkSeats(argv[3]);
+     Controller.checkSeats(input[0]);
      break
    case "buyTicket":
-     Controller.buyTicket(argv[3]);
+     Controller.buyTicket(input[0], input[1], input[2], input[3], input[4]);
      break
    case "ticketInfo":
-     Controller.ticketInfo(argv[3]);
+     Controller.ticketInfo(input[0]);
      break
    case "changeTicket":
-     Controller.changeTicket(argv[3]);
+     Controller.changeTicket(input[0], input[1], input[2]);
      break
    case "cancelTicket":
-     Controller.cancelTicket(argv[3]);
+     Controller.cancelTicket(input[0]);
      break
    case "showPassenger":
-     Controller.showPassenger(argv[3]);
+     Controller.showPassenger(input[0]);
      break
  }

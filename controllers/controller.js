@@ -13,43 +13,82 @@ class Controller {
   static planeList(){
     Model.readPlanes((err, result) => {
       if(err) {
-        View.showErrorPlaneList(err)
+        View.showError(err)
       } else {
         View.showPlaneList(result)
       }
     })
   }
-  
+
   static passengerList() {
     Model.readPassengers((err, result) => {
       if(err) {
-        View.showErrorPassengerList(err)
+        View.showError(err)
       } else {
         View.showPassengerList(result)
       }
     })
-    
   }
 
-  static checkSeats(){
-
+  static checkSeats(flightNumber){
+    Model.checkSeat(flightNumber,(err, result) => {
+      if(err) {
+        View.showError(err);
+      } else {
+        View.showCheckSeats(result);
+      }
+    })
   }
 
   // PART 2
-  static buyTicket(){
-
+  static buyTicket(buyTicket) {
+    Model.addPassenger(buyTicket, (err, result) => {
+      if(err) {
+        View.showError(err);
+      } else {
+        View.showBuyTicket(result);
+      }
+    }) 
   }
-  static ticketInfo(){
 
+  static ticketInfo() {
+    Model.findPassenger(buyTicket, (err, result) => {
+      if(err) {
+        View.showError(err);
+      } else {
+        View.showTicketInfo(result);
+      }
+    }) 
   }
-  static changeTicket(){
 
+  static changeTicket() {
+    Model.addPassenger(buyTicket, (err, result) => {
+      if(err) {
+        View.showError(err);
+      } else {
+        View.showBuyTicket(result);
+      }
+    }) 
   }
-  static cancelTicket(){
 
+  static cancelTicket() {
+    Model.addPassenger(buyTicket, (err, result) => {
+      if(err) {
+        View.showError(err);
+      } else {
+        View.showBuyTicket(result);
+      }
+    }) 
   }
-  static showPassenger(){
 
+  static showPassenger() {
+    Model.addPassenger(buyTicket, (err, result) => {
+      if(err) {
+        View.showError(err);
+      } else {
+        View.showBuyTicket(result);
+      }
+    }) 
   }
 }
 

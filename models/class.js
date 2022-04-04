@@ -27,6 +27,9 @@ class Ticket {
         this.destinantion = destinantion;
         this.#seatNumber = seatNumber;
     } 
+    get seatNumber () {
+        return this.#seatNumber
+    }
 }
 
 // Masalah 3 tiket menggunakan sifat OOP yaitu Inheritance/pewarisan
@@ -48,6 +51,14 @@ class Economy extends Ticket {
 }
 
 class Factory {
+    static createPlane(flightNumber, airlineName, origin, destination) {
+        return new Plane(flightNumber, airlineName, origin, destination)
+    }
+
+    static createPassenger(id, name, gender, ticket) {
+        return new Passenger(id, name, gender, ticket)
+    }
+    
     static createTicket(airlineName, type, origin, destination, seatNumber) {
       if (type === "VIP") {
         return new VIP(airlineName, origin, destination, seatNumber)
@@ -61,9 +72,5 @@ class Factory {
 
 module.exports = {Plane, 
     Passenger, 
-    Ticket, 
-    VIP, 
-    Business, 
-    Economy, 
     Factory
 } 
