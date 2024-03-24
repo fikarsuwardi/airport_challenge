@@ -1,4 +1,5 @@
 "use strict"
+const { log } = require('console')
 const Model = require('../models/model')
 const View = require('../views/view')
 
@@ -31,12 +32,12 @@ class Controller {
   }
 
   static checkSeats(flightNumber){
-    Model.checkSeat(flightNumber,(err, result) => {
-      if(err) {
+    Model.checkSeat(flightNumber, (err, result) => {
+      if( err) {
         View.showError(err);
       } else {
         View.showCheckSeats(result);
-      }
+      };
     })
   }
 

@@ -1,6 +1,10 @@
 "use strict"
+const { log } = require("console")
 const {Plane, 
   Passenger, 
+  VIP,
+  Business,
+  Economy,
   Factory
 } = require("./class.js")
 
@@ -34,49 +38,65 @@ class Model {
       if (err) {
         callback (err, null)
       } else {
-        data = JSON.parse(data)
-
-        let result = []
-
+        data = JSON.parse(data)        
+        let result = [];
         for (let i = 0; i < data.length; i++) {
           let instance = new Passenger(data[i].id, data[i].name, data[i].gender, data[i].ticket)
-        
           result.push(instance)
-          //console.log(result)
         }
         callback (null, result);
       }
     })
   }
 
-  // static checkSeat(fligthtNumber, callback){
-  //   fs.readFile("./data/plane.json", 'utf8', (err, data) => {
-  //     if (err) {
-  //       callback (err, null)
-  //     } else {
-  //       data = JSON.parse(data)
-  //       for (let i = 0; i < data.length; i++) {
-  //         // console.log(data[i].flightNumber);
-  //         if (data[i].flightNumber !== fligthtNumber ) {
-  //           callback (err, null)
-  //         } else {
-  //           fs.readFile("./data/passanger.json", 'utf8', (err, data) => {
-  //             if (err) {
-  //               callback (err, null)
-  //             } else {
-  //               data = JSON.parse(data)
-  //               for (letj = 0; j < data.length; j++) {
-  //                 let ticket = data[j]
-  //                 //console.log(ticket)  
-  //               }
-  //             }
-  //           })
-  //         }
-  //       }
-  //     }
-  //   })
+  static checkSeat(fligthtNumber, callback) {
+    let listPassengerInFlightNumber = [];
+    let result;
+    let selectedPlane;
 
-  // }
+    fs.readFile("./data/plane.json", 'utf8', (err, listPlane) => {
+      if (err) {
+        callback (err, null)
+      } else {
+        listPlane = JSON.parse(listPlane)
+        for (let i = 0; i < listPlane.length; i++) {
+          if (listPlane[i].flightNumber == fligthtNumber ) {
+            selectedPlane = listPlane[i];
+          }
+        }
+      }
+    })
+
+    fs.readFile("./data/passanger.json", 'utf8', (err, listPassenger) => {
+      if (err) {
+        callback (err, null)
+      } else {
+        listPassenger = JSON.parse(listPassenger)
+        for (let j = 0; j < listPassenger.length; j++) {
+          if (
+            selectedPlane.airlineName == listPassenger[j].ticket.airlineName &&
+            selectedPlane.origin == listPassenger[j].ticket.origin &&
+            selectedPlane.destination == listPassenger[j].ticket.destination 
+          ) {
+            const newTicket = new Factory.Economy();
+            console.log(newTicket, "dsdasdasd");
+
+            // if (listPassenger[j].ticket.type == "Economy") {
+            //   newTicket = new Economy(listPassenger[j].ticket.airlineName, "Economy", listPassenger[j].ticket.origin, listPassenger[j].ticket.destination, listPassenger[j].ticket.seatNumber)
+            // } else if (listPassenger[j].ticket.type == "Business") {
+            //   newTicket = new Business(listPassenger[j].ticket.airlineName, "Business", listPassenger[j].ticket.origin, listPassenger[j].ticket.destination, listPassenger[j].ticket.seatNumber)
+            // } else {
+            //   newTicket = new VIP(listPassenger[j].ticket.airlineName, "VIP", listPassenger[j].ticket.origin, listPassenger[j].ticket.destination, listPassenger[j].ticket.seatNumber)
+            // }
+            let newPassenger = new Passenger(listPassenger[j].id, listPassenger[j].name, listPassenger[j].gender, newTicket)
+            listPassengerInFlightNumber.push(newPassenger);
+          }
+        }
+        result = new Plane(selectedPlane.flightNumber, selectedPlane.airlineName, selectedPlane.origin, selectedPlane.destination, listPassengerInFlightNumber)
+        callback (null, result);
+      }
+    })
+  }
 
   // PART 2
   static save(data, cb){ 
@@ -88,8 +108,6 @@ class Model {
         airlineName: el.airlineName,
         origin: el.origin,
         destination: el.destination,
-        
-
       }
     })
     fs.writeFile("./data/passanger.json", JSON.stringify(data, null, 2), (err) => {

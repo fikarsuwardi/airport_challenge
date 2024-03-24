@@ -33,42 +33,40 @@ class View {
     console.table(dataAirLine)
   }
 
-  // static showCheckSeats(data) {
-  //   const {airlineName, origin, destination} = data;
-  //   console.log(`====================`);
-  //   console.log(`Fligth Number: ${flightNumber}`);
-  //   console.log(`Airline name: ${airlineName}`);
-  //   console.log(`Origin: ${origin}`)
-  //   console.log(`Destination: ${destination}`);
-  //   console.log(`====================`);
-  //   console.log(`Seating Plan`);
+  static showCheckSeats(data) {
+    console.log(data);
+    // const {airlineName, origin, destination} = data;
+    // console.log(`====================`);
+    // console.log(`Fligth Number: ${flightNumber}`);
+    // console.log(`Airline name: ${airlineName}`);
+    // console.log(`Origin: ${origin}`)
+    // console.log(`Destination: ${destination}`);
+    // console.log(`====================`);
+    // console.log(`Seating Plan`);
 
-  //   let seats = [
-  //   ['A', 'B', 'C', 'D'],
-  //   ['', '', '', ''],
-  //   ['', '', '', ''],
-  //   ['', '', '', ''],
-  //   ['', '', '', ''],
-  //   ['', '', '', ''],
-  //   ['', '', '', ''],
-  //   ['', '', '', ''],
-  //   ['', '', '', '']
-  //   ]
+    // let seats = [
+    // ['A', 'B', 'C', 'D'],
+    // ['', '', '', ''],
+    // ['', '', '', ''],
+    // ['', '', '', ''],
+    // ['', '', '', ''],
+    // ['', '', '', ''],
+    // ['', '', '', ''],
+    // ['', '', '', ''],
+    // ['', '', '', '']
+    // ]
 
-  //   console.table(seats)
-
-  static showBuyTicket(data) {
-    console.log(data)
+    // console.table(seats)
   }
 
-  static showTicketInfo(data) {
-    console.log(data)
-  }
-
-  static 
-
-
+  // static showBuyTicket(data) {
+  //   console.log(data)
   // }
+
+  // static showTicketInfo(data) {
+  //   console.log(data)
+  // }
+
 
 
 

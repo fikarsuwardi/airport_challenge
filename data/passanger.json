@@ -1,5 +1,29 @@
 [
   {
+    "id": 1,
+    "name": "Adi",
+    "gender": "Male",
+    "ticket": {
+      "airlineName": "Merak Indonesia",
+      "type": "Economy",
+      "origin": "Jakarta",
+      "destination": "Bandung",
+      "seatNumber": "D-3"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Mimi Peri",
+    "gender": "Female",
+    "ticket": {
+      "airlineName": "Merak Indonesia",
+      "type": "Economy",
+      "origin": "Jakarta",
+      "destination": "Bandung",
+      "seatNumber": "D-4"
+    }
+  },
+  {
     "id": 3,
     "name": "Budi",
     "gender": "Male",

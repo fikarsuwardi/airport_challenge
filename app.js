@@ -3,20 +3,22 @@ const { passengerList } = require('./controllers/controller.js')
 const Controller = require('./controllers/controller.js')
 
 // Good luck ...
-
 const command = process.argv[2]
 const input = process.argv.slice(3)
 // console.log(argv)
 
  switch(command) {
+  case undefined:
+     Controller.help(); // done
+     break
    case "help":
-     Controller.help();
+     Controller.help(); // done
      break
    case "planeList":
-     Controller.planeList();
+     Controller.planeList(); // done
      break
    case "passengerList":
-     Controller.passengerList();
+     Controller.passengerList(); // done
      break
    case "checkSeats":
      Controller.checkSeats(input[0]);

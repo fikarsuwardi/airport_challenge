@@ -1,20 +1,20 @@
 "use strict"
-
-class Plane {
-    constructor (flightNumber, airlineName, origin, destinantion) {
-        this.flightNumber = flightNumber;
-        this.airlineName = airlineName;
-        this.origin = origin;
-        this.destinantion = destinantion;
-    }
-}
-
 class Passenger {
     constructor (id, name, gender, ticket,) {
         this.id = id;
         this.name = name;
         this.gender = gender;
         this.ticket = ticket;
+    }
+}
+
+class Plane {
+    constructor (flightNumber, airlineName, origin, destinantion, listPassenger) {
+        this.flightNumber = flightNumber;
+        this.airlineName = airlineName;
+        this.origin = origin;
+        this.destinantion = destinantion;
+        this.listPassenger = listPassenger;
     }
 }
 
@@ -33,7 +33,6 @@ class Ticket {
 }
 
 // Masalah 3 tiket menggunakan sifat OOP yaitu Inheritance/pewarisan
-
 class VIP extends Ticket {
     constructor(airlineName, origin, destination, seatNumber) {
         super(airlineName, 'VIP', origin, destination, seatNumber)
